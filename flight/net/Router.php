@@ -113,5 +113,16 @@ class Router {
     public  function reset() {
         $this->index = 0;
     }
+
+    public function options(Request $request) {
+        $url_decoded = urldecode( $request->url );
+        $methods = array();
+        foreach ($this->routes as $route) {
+            if ($route !== false && $route->matchUrl($url_decoded, $this->case_sensitive)) {
+                $methods = array_merge($methods, $route->methods);
+            }
+        }
+        return array_unique($methods);
+    }
 }
 

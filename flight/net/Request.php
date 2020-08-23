@@ -18,7 +18,7 @@ use flight\util\Collection;
  * The default request properties are:
  *   url - The URL being requested
  *   base - The parent subdirectory of the URL
- *   method - The request method (GET, POST, PUT, DELETE)
+ *   method - The request method (GET, POST, PUT, DELETE, PATCH, OPTIONS)
  *   referrer - The referrer URL
  *   ip - IP address of the client
  *   ajax - Whether the request is an AJAX request
@@ -46,7 +46,7 @@ class Request {
     public $base;
 
     /**
-     * @var string Request method (GET, POST, PUT, DELETE)
+     * @var string Request method (GET, POST, PUT, DELETE, PATCH, OPTIONS)
      */
     public $method;
 

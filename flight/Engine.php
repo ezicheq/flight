@@ -325,6 +325,17 @@ class Engine {
         // Enable output buffering
         ob_start();
 
+        // Handle OPTIONS requests
+        if ($request->method == "OPTIONS") {
+            $methods = $router->options($request);
+            $this->response()
+                 ->clear()
+                 ->status(200)
+                 ->header('Allow', implode(", ", $methods))
+                 ->send();
+            exit();
+        }
+
         // Route the request
         while ($route = $router->route($request)) {
             $params = array_values($route->params);
